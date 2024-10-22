@@ -1,0 +1,91 @@
+scalar DateTime
+
+type Post {
+    id: Int!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+    title: String!
+    content: String
+    published: Boolean!
+    authorId: Int!
+    author: User!
+}
+
+type Profile {
+    id: Int!
+    bio: String
+    userId: Int!
+    user: User!
+}
+
+type User {
+    id: Int!
+    email: String!
+    name: String
+    posts: [Post!]!
+    profile: Profile
+}
+
+type Query {
+    # Post queries
+    posts: [Post!]!
+    post(id: Int!): Post
+    publishedPosts: [Post!]!
+    postsByUser(userId: Int!): [Post!]!
+
+    # User queries
+    users: [User!]!
+    user(id: Int!): User
+    userByEmail(email: String!): User
+
+    # Profile queries
+    profiles: [Profile!]!
+    profile(id: Int!): Profile
+    profileByUser(userId: Int!): Profile
+}
+
+type Mutation {
+    # Post mutations
+    createPost(
+        title: String!
+        content: String
+        published: Boolean
+        authorId: Int!
+    ): Post!
+
+    updatePost(
+        id: Int!
+        title: String
+        content: String
+        published: Boolean
+    ): Post!
+
+    deletePost(id: Int!): Post
+
+    # User mutations
+    createUser(
+        email: String!
+        name: String
+    ): User!
+
+    updateUser(
+        id: Int!
+        email: String
+        name: String
+    ): User!
+
+    deleteUser(id: Int!): User
+
+    # Profile mutations
+    createProfile(
+        bio: String
+        userId: Int!
+    ): Profile!
+
+    updateProfile(
+        id: Int!
+        bio: String
+    ): Profile!
+
+    deleteProfile(id: Int!): Profile
+}
