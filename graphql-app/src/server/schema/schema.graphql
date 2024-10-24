@@ -30,18 +30,18 @@ type Query {
     # Post queries
     posts: [Post!]!
     post(id: Int!): Post
-    publishedPosts: [Post!]!
-    postsByUser(userId: Int!): [Post!]!
+    #    publishedPosts: [Post!]!
+    #    postsByUser(userId: Int!): [Post!]!
 
     # User queries
-    users: [User!]!
-    user(id: Int!): User
-    userByEmail(email: String!): User
+    #    users: [User!]!
+    #    user(id: Int!): User
+    #    userByEmail(email: String!): User
 
     # Profile queries
-    profiles: [Profile!]!
-    profile(id: Int!): Profile
-    profileByUser(userId: Int!): Profile
+    #    profiles: [Profile!]!
+    #    profile(id: Int!): Profile
+    #    profileByUser(userId: Int!): Profile
 }
 
 type Mutation {
